@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}게시글 목록{% endblock %}
+
+{% block content %}
+<h1>게시글 목록</h1>
+<!-- {{ post_list }} -->
+{% for post in post_list %}
+<div>
+    {{ post.id }}<br>
+    {{ post.image }}<br>
+    {{ post.content }}<br>
+    {{ post.created_at }}<br>
+</div>
+{% endfor %}
+{% endblock %}
