@@ -1,11 +1,11 @@
 from django.contrib import admin
-from supports.models import Faq, Inquiry, Answer
+from supports.models import Inquiry, Answer, Faq
 
 
 @admin.register(Faq)
 class FaqModelAdmin(admin.ModelAdmin):
-    list_display = ('question', 'category', 'answer', 'writer',
-                    'created_at', 'last_modified_at', 'last_modified_writter')
+    list_display = ('title', 'content', 'category', 'created_by',
+                    'updated_by', 'created_at', 'updated_at')
 
     # list_editable = ('question', 'answer',)
 
@@ -20,7 +20,7 @@ class AnswerInline(admin.TabularInline):
 
 @admin.register(Inquiry)
 class InquiryModelAdmin(admin.ModelAdmin):
-    list_display = ('title', 'email', 'phone_number', 'content',
-                    'image', 'writter', 'created_at', 'last_modified_at', 'last_modified_writter')
+    list_display = ('title', 'email', 'phone',
+                    'content', 'image', 'created_at', 'updated_at')
     inlines = [AnswerInline]
-    readonly_fields = ('created_at', 'last_modified_at')
+    # readonly_fields = ('created_at', 'updated_at')
