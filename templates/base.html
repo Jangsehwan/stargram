@@ -18,7 +18,9 @@
         <nav>
             <ul class="bottom-menu-group">
                 <li>
-                    <img src="{% static 'icons/home_outlined_black_36dp.svg' %}" alt="홈">
+                    <a href="{% url 'index' %}">
+                        <img src="{% static 'icons/home_outlined_black_36dp.svg' %}" alt="홈">
+                    </a>
                 </li>
                 <li>
                     <img src="{% static 'icons/search_outlined_black_36dp.svg' %}" alt="검색" />
