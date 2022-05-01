@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}글 입력{% endblock %}
+
+{% block content %}
+<h1>Post 입력 화면</h1>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div>
+        <!-- {{ form.as_p }} front코드노출  -->
+        <!-- {# {{ form.as_p }} #}  이거 코드노출안돼-->
+        {{ form.as_p }}
+    </div>
+    <div>
+        <input type="submit">
+    </div>
+</form>
+
+
+{% endblock %}

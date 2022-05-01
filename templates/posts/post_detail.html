@@ -4,4 +4,5 @@
 {% block content %}
 <h1>Post 상세 화면</h1>
 {% include 'mixin/posts/post_card.html' with detail=True %}
+{{ form.as_p }}
 {% endblock %}

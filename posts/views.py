@@ -4,6 +4,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404, HttpResponse, JsonResponse
 from django.views.generic import ListView
 from django.contrib.auth.decorators import login_required
+from pkg_resources import require
+
+from .forms import PostBaseForm, PostCreateForm, PostDetailForm
 from .models import Post
 
 
@@ -26,12 +29,14 @@ def post_list_view(reqeust):
 
 
 def post_detail_view(reqeust, id):
+
     try:
         post = Post.objects.get(id=id)
     except Post.DoesNotExist:
         return redirect('index')
     context = {
         'post': post,
+        'form': PostDetailForm(),
     }
     return render(reqeust, 'posts/post_detail.html', context)
 
@@ -50,6 +55,27 @@ def post_create_view(reqeust):
             content=content,
             writer=reqeust.user,
         )
+        return redirect('index')
+
+
+@login_required
+def post_create_form_view(reqeust):
+    if reqeust.method == 'GET':
+        form = PostCreateForm()
+        context = {
+            'form': form,
+        }
+        return render(reqeust, 'posts/post_form2.html', context)
+    else:
+        form = PostBaseForm(reqeust.POST, reqeust.FILES)
+        if form.is_valid():
+            Post.objects.create(
+                image=form.cleaned_data['image'],
+                content=form.cleaned_data['content'],
+                writer=reqeust.user,
+            )
+        else:
+            redirect('posts:post-create')
         return redirect('index')
 
 
