@@ -67,7 +67,7 @@ def post_create_form_view(reqeust):
         }
         return render(reqeust, 'posts/post_form2.html', context)
     else:
-        form = PostBaseForm(reqeust.POST, reqeust.FILES)
+        form = PostCreateForm(reqeust.POST, reqeust.FILES)
         if form.is_valid():
             Post.objects.create(
                 image=form.cleaned_data['image'],

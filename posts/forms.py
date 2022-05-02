@@ -30,8 +30,8 @@ class PostBaseForm(forms.ModelForm):
 class PostCreateForm(PostBaseForm):
     class Meta(PostBaseForm.Meta):
         fields = ['image', 'content']
-# 유효성검사에 대한 custum -
 
+# 유효성검사에 대한 custum - def clean_filedname
     def clean_content(self):
         data = self.cleaned_data['content']
         if "비속어" == data:
