@@ -1,5 +1,4 @@
-from tkinter import CASCADE
-from tokenize import Triple
+
 from django.db import models
 from django.contrib.auth.models import AbstractUser, UserManager as DjangoUserManager
 

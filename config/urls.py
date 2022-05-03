@@ -20,6 +20,7 @@ urlpatterns = [
     path('cbv/', ClassView.as_view(), name='cbv'),
 
     path('', index, name='index'),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
     path('posts/', include('posts.urls', namespace='posts')),
 
     path('__debug__/', include('debug_toolbar.urls')),
