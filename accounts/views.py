@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import login
+from django.contrib.auth import login, logout
 # 자체에서 제공해주는 Form
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
@@ -45,3 +45,12 @@ def login_view(request):
             # 비지니스 로직 처리 - 로그인실패
             # 응답
             return render(request, 'accounts/login.html', {'form': form})
+
+
+def logout_view(request):
+    # 유효성검사 - login일경우 체크 , is_authenticated property라서 ()하지않아
+    if request.user.is_authenticated:
+        # 비지니스로직처리 - 로그아웃처리
+        logout(request)
+    # 응답
+    return redirect('index')
