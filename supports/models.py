@@ -34,11 +34,6 @@ class Faq(models.Model):
     updated_at = models.DateTimeField(
         verbose_name='최종수정일시', auto_now=True)
 
-# faq = Faq()
-# faq.category = '1'
-# faq_category = faq.CATEGORY_ONE # 훨씬 좋아
-# faq.save()
-
 
 class Inquiry(models.Model):
 
@@ -52,6 +47,14 @@ class Inquiry(models.Model):
         (CATEGORY_THREE, '기타'),
     ]
 
+    STATUS_CHOICES = [
+        ('1', '문의 등록'),
+        ('2', '접수 완료'),
+        ('3', '답변 완려'),
+    ]
+
+    status = models.CharField(
+        max_length=5, verbose_name='질문 상태', choices=STATUS_CHOICES)
     category = models.CharField(
         verbose_name='카테고리', max_length=2, choices=CATEGORY_CHOICES, default=CATEGORY_THREE)
     title = models.CharField(verbose_name='질문 제목', max_length=80)

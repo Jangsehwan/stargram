@@ -36,3 +36,9 @@ class User(AbstractUser):
 #     phone_sub = models.CharField(verbose_name='보조 전화번호', max_length=11)
 
 #     user = models.ForeignKey(to=User, on_delete=models.CASCADE)
+
+
+# 장고의 인증시스템
+# 그중심에 User객체가들어가!***
+# 별도로 User객체를 만들면 안돼!!
+# 항상 기존의 User객체를 사용하거나, User객체를 커스텀해서 사용하거나, 다른테이블과 관계를 지정해서 확장해서사용
